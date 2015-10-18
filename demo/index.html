@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ElasticSearchLoggerDemoApp">
+<head>
+    <meta charset="utf-8">
+
+    <title>angular-elasticsearch-logger</title>
+
+</head>
+<body ng-controller="DemoCtrl as Ctrl">
+    <p>
+      By default the app.js configuration points to 
+      <a href="http://localhost:9200">http://localhost:9200</a>. Please modify the app.js
+      settings to point to a elasticsearch server.
+    </p>
+
+    <form name="form" novalidate>
+      <p>
+        <label>Message to send:</label><br/>
+        <input ng-model="Ctrl.message" required/>
+      </p>
+
+      <button ng-click="Ctrl.logIt()" ng-disabled="form.$invalid">Log It!</button>
+    </form>
+
+	<script type="text/javascript" src="../bower_components/angular/angular.min.js"></script>
+    <!-- Section above gets added by bower upon bower install -->
+
+    <!-- Section below has to be manually inserted in the regular scripts -->
+    <script src="../bower_components/elasticsearch/elasticsearch.angular.js"></script>
+    <script src="../bower_components/stacktrace-js/stacktrace.js"></script>
+    <script type="text/javascript" src="../angular-elasticsearch-logger.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+</body>
+</html>

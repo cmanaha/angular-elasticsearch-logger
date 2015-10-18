@@ -1,3 +1,8 @@
+// to debug tests run: 
+//	node_modules/karma/bin/karma start ./test/karma.conf.js --browsers=Chrome --single-run=false --debug
+// from the repo root directory, then use chrome for a javascript 
+// debugging session
+
 module.exports = function(config){
     var sourcePreprocessors = 'coverage';
     function isDebug(argument) {
@@ -15,9 +20,9 @@ module.exports = function(config){
             'bower_components/angular/angular.js',
             'bower_components/angular-mocks/angular-mocks.js',
             'bower_components/elasticsearch/elasticsearch.js',
-	          'bower_components/elasticsearch/elasticsearch.angular.js',
+            'bower_components/elasticsearch/elasticsearch.angular.js',
             'bower_components/stacktrace-js/stacktrace.js',
-	          'angular-elasticsearch-logger.js',
+            'angular-elasticsearch-logger.js',
             'test/unit/**/*.js'
         ],
 

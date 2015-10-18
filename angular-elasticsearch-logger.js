@@ -12,11 +12,10 @@ angular.module('cmanaha.angular-elasticsearch-logger',['elasticsearch'])
     var self = this;
     self.esClientDetails = {};
     self.logDetails = {
-        'index': 'defaul_js_index',
+        'index': 'defaul_angularjs_index',
         'type': 'jslog',
         'bufferSize': 5000,
         'flushIntervalInMS': 2500,
-        'logToConsole': true 
     };
     
     self.appDetails = {};
@@ -60,10 +59,10 @@ angular.module('cmanaha.angular-elasticsearch-logger',['elasticsearch'])
         self.esClient = esFact(self.esClientDetails);
 
         self.level = {
-            INFO: 'INFO',
             DEBUG: 'DEBUG',
-            ERROR: 'ERROR',
-            WARN: 'WARNING'
+            INFO: 'INFO',
+            WARN: 'WARNING',
+            ERROR: 'ERROR'
         };
 
 
@@ -120,7 +119,7 @@ angular.module('cmanaha.angular-elasticsearch-logger',['elasticsearch'])
             //add additional application data context
             angular.forEach(self.appDetails, function (value, key) {
                 data[key] = value;
-            });
+            }); 
 
             //add details about the method, line number, etc.
             //if the log was thrown from an exception, log the exception details and
@@ -148,11 +147,11 @@ angular.module('cmanaha.angular-elasticsearch-logger',['elasticsearch'])
             self.logBuffer.push(data);
 
             if (self.logBuffer.length / 2 >= self.logDetails.bufferSize) {
-                self.flush();
+                self.internalFlush();
             }
         };
 
-        self.flush = function () {
+        self.internalFlush = function () {
             if (self.logBuffer.length > 0) {
                 self.esClient.bulk({
                     body: self.logBuffer
@@ -167,7 +166,9 @@ angular.module('cmanaha.angular-elasticsearch-logger',['elasticsearch'])
             }
         };
 
-        self.flushInterval = interval(self.flush, self.logDetails.flushIntervalInMS);
+        self.flushInterval = interval(self.internalFlush, self.logDetails.flushIntervalInMS);
+
+
 
         return {
             info: function (message) { self.internalLog(message, self.level.INFO, undefined); },
@@ -176,6 +177,7 @@ angular.module('cmanaha.angular-elasticsearch-logger',['elasticsearch'])
             debug: function (message) { self.internalLog(message, self.level.DEBUG, undefined); },
             warningWithException: function (message, exception) { self.internalLog(message, self.level.WARN, exception); },
             errorWithException: function (message, exception) { self.internalLog(message, self.level.ERROR, exception); },
+            flush: function(){self.internalFlush();},
         };
     }];
 }]);
