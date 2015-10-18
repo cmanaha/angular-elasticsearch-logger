@@ -45,6 +45,10 @@ module.exports = function(grunt) {
               files: ['*.js', '!*.min.js'],
               tasks: ['karma:unit:run'] //NOTE the :run flag
           }
+      },
+	
+      clean : {
+	packages: ["bower_components","node_modules"]
       }
 
     });
@@ -53,6 +57,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-karma');
+    grunt.loadNpmTasks('grunt-contrib-clean');
 
     grunt.registerTask('default', ['jshint','uglify'] );
     grunt.registerTask('test', [ 'karma:travis' ] );
