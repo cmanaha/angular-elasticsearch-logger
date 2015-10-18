@@ -54,8 +54,10 @@ The _esLoggingProvider.setApplicationLogContext(config)_ takes an object with an
 
 **Note:** you need to add to your scripts dependencies the following scripts, 
 ```html
-    <script src="bower_components/elasticsearch/elasticsearch.angular.js"></script>
-    <script src="bower_components/stacktrace/stacktrace.js"></script>
+<script src="bower_components/elasticsearch/elasticsearch.js"></script>
+<script src="bower_components/elasticsearch/elasticsearch.angular.js"></script>
+<script src="bower_components/stacktrace/stacktrace.js"></script>
+<script src="bower_components/angular-elasticsearch-logger/angular-elasticsearch-logger.js"></script>
 ```
 
 The last step required is to make sure you add the dependency with your services/controllers and use the _CMRESLogger_ service.
@@ -63,7 +65,7 @@ The last step required is to make sure you add the dependency with your services
 ```javascript
 angular
     .module('yourAngularApp')
-    .controller( 'MyCtrl', [CMRESLogger',function(CMRESLogger){
+    .controller( 'MyCtrl', ['CMRESLogger',function(CMRESLogger){
 		CMRESLogger.info( 'hello world' );
 		CMRESLogger.debug( 'hello world' );
 		CMRESLogger.warning( 'hello world' );
