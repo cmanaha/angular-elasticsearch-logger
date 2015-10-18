@@ -1,27 +1,30 @@
 {
-	"name": "angular-elasticsearch-logger",
-	"version": "0.0.1",
-	"authors": [
-		"Carlos Manzanedo Rueda <c.manaha@gmail.com>"
-	],
-	"description": "AngularJS ElasticSearch Logger Service",
-	"keywords": [
-		"AngularJS",
-		"ElasticSearch",
-		"logger",
-		"service"
-	],
-	"license": "MIT",
-	"ignore": [
-		"**/.*",
-		"node_modules",
-		"bower_components",
-		"test",
-		"tests"
-	],
-	"dependencies": {
-		"angular":"~1.4.0",
-	},
-	"devDependencies": {
-	}
+  "name": "angular-elasticsearch-logger",
+  "version": "0.0.1",
+  "main" : "angular-elasticsearch-logger.js",
+  "keywords": ["angularjs", "logging", "logger","elasticsearch","log"],
+  "authors": [
+    { "name": "Carlos Manzanedo Rueda", "email": "c.manaha@gmail.com" }
+  ],
+  "dependencies": {
+    "angular": "~1.4.0"
+    },
+    "devDependencies": {
+        "angular-mocks": "~1.4.0",
+        "angular-loader": "~1.4.0"
+    },
+    "main" : "angular-elasticsearch-logger.js",
+    "ignore": [
+        "demo",
+        "test",
+        "Gruntfile.js",
+        "package.json",
+        "karma.conf.js",
+        "karma-e2e.conf.js",
+        "node_modules",
+        "bower_components"
+    ]
 }
+
+
+
