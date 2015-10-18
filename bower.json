@@ -1,30 +1,37 @@
 {
   "name": "angular-elasticsearch-logger",
   "version": "0.0.1",
-  "main" : "angular-elasticsearch-logger.js",
-  "keywords": ["angularjs", "logging", "logger","elasticsearch","log"],
+  "main": "angular-elasticsearch-logger.js",
+  "keywords": [
+    "angularjs",
+    "logging",
+    "logger",
+    "elasticsearch",
+    "log"
+  ],
   "authors": [
-    { "name": "Carlos Manzanedo Rueda", "email": "c.manaha@gmail.com" }
+    {
+      "name": "Carlos Manzanedo Rueda",
+      "email": "c.manaha@gmail.com"
+    }
   ],
   "dependencies": {
-    "angular": "~1.4.0"
-    },
-    "devDependencies": {
-        "angular-mocks": "~1.4.0",
-        "angular-loader": "~1.4.0"
-    },
-    "main" : "angular-elasticsearch-logger.js",
-    "ignore": [
-        "demo",
-        "test",
-        "Gruntfile.js",
-        "package.json",
-        "karma.conf.js",
-        "karma-e2e.conf.js",
-        "node_modules",
-        "bower_components"
-    ]
+    "angular": "~1.4.0",
+    "elasticsearch": "~8.2.0",
+    "stacktrace-js": "stacktrace#~1.0.0"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.4.0",
+    "angular-loader": "~1.4.0"
+  },
+  "ignore": [
+    "demo",
+    "test",
+    "Gruntfile.js",
+    "package.json",
+    "karma.conf.js",
+    "karma-e2e.conf.js",
+    "node_modules",
+    "bower_components"
+  ]
 }
-
-
-

@@ -6,10 +6,11 @@
  * Controller of the clientSideApp
  */
 
-angular.module('cmanaha.angular-elasticsearch-logger',['elasticsearch']).provider('CMRESLogger', [function ()
+angular.module('cmanaha.angular-elasticsearch-logger',['elasticsearch'])
+    .provider('CMRESLogger', [function ()
 {
     var self = this;
-    self.esClientDetils = {};
+    self.esClientDetails = {};
     self.logDetails = {
         'index': 'defaul_js_index',
         'type': 'jslog',
@@ -17,19 +18,36 @@ angular.module('cmanaha.angular-elasticsearch-logger',['elasticsearch']).provide
         'flushIntervalInMS': 2500,
         'logToConsole': true 
     };
+    
     self.appDetails = {};
 
     self.setElasticSearchConfig = function (elasticSearchConfig) {
-        self.esClientDetils = elasticSearchConfig;
+        self.esClientDetails = elasticSearchConfig;
+    };
+
+    self.getElasticSearchConfig = function(){
+        var res = angular.copy(self.esClientDetails);
+        return res;
     };
     
     self.setLogConfig = function (applicationLogConfig) {
         self.logDetails = applicationLogConfig;
     };
 
+    self.getLogConfig = function(){
+        var res = angular.copy(self.logDetails);
+        return res;
+    };
+
     self.setApplicationLogContext = function (applicationLogConfig) {
         self.appDetails = applicationLogConfig;
     };
+
+    self.getApplicationLogContext = function(){
+        var res = angular.copy(self.appDetails);
+        return res;
+    };
+
 
     //self.$get = ['$interval', 'esFactory', function ($interval, esFactory) {
     self.$get = ['$injector', function ($injector) {
@@ -39,7 +57,7 @@ angular.module('cmanaha.angular-elasticsearch-logger',['elasticsearch']).provide
         self.logBuffer = [];
 
         var esFact = esFactory;
-        self.esClient = esFact(self.esClientDetils);
+        self.esClient = esFact(self.esClientDetails);
 
         self.level = {
             INFO: 'INFO',

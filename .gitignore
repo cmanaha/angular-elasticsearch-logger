@@ -5,7 +5,6 @@
 *.dat
 *.out
 *.pid
-*.map
 *.gz
 .idea/*
 *.DS_Store
@@ -15,3 +14,4 @@ logs
 results
 node_modules
 bower_components
+build

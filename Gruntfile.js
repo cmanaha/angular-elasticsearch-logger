@@ -28,19 +28,16 @@ module.exports = function(grunt) {
           travis: {
             configFile: 'test/karma.conf.js',
             singleRun: true,
-            browsers: ['Firefox']
+            browsers: ['Chrome']
           }
       },
 
       watch: {
-
-          //run JSHint on JS files
           jshint: {
               files: ['angular-elasticsearch-logger.js'],
               tasks: ['jshint']
           },
 
-          //run unit tests with karma (server needs to be already running)
           karma: {
               files: ['*.js', '!*.min.js'],
               tasks: ['karma:unit:run'] //NOTE the :run flag
@@ -48,7 +45,7 @@ module.exports = function(grunt) {
       },
 	
       clean : {
-	packages: ["bower_components","node_modules"]
+	packages: ["bower_components","node_modules","build"]
       }
 
     });
