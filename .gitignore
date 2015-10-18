@@ -5,6 +5,7 @@
 *.dat
 *.out
 *.pid
+*.map
 *.gz
 .idea/*
 *.DS_Store
