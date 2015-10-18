@@ -36,8 +36,11 @@ angular
             'apiVersion': '1.7'
         });
 
-        esLoggingProvider.setLogConfig({
+       esLoggingProvider.setLogConfig({
             'index': 'demo_app_index',
+            'type': 'jslog',
+            'bufferSize': 2500,
+            'flushIntervalInMS': 3000
         });
 
         esLoggingProvider.setApplicationLogContext({
@@ -56,7 +59,7 @@ The _esLoggingProvider.setApplicationLogContext(config)_ takes an object with an
 ```html
 <script src="bower_components/elasticsearch/elasticsearch.js"></script>
 <script src="bower_components/elasticsearch/elasticsearch.angular.js"></script>
-<script src="bower_components/stacktrace/stacktrace.js"></script>
+<script src="bower_components/stacktrace-js/stacktrace.js"></script>
 <script src="bower_components/angular-elasticsearch-logger/angular-elasticsearch-logger.js"></script>
 ```
 
@@ -73,7 +76,7 @@ angular
     }]);
 ```
 
-### Additional Configuration
+### Configuration
 
 The _CMRESLoggerProvider_ does also accept an extra configuration object that configures the internal behaviour of the logger on things such as how to buffer and submit to elasticsearch.
 
