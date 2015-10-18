@@ -14,8 +14,7 @@ angular
         esLoggingProvider.setElasticSearchConfig({
             //point the host:port to an elasticsearch instance or run
             //an elasticsearch service in your own
-            //'host': 'http://localhost:9200',
-            'host': 'http://192.168.1.41:9200',
+            'host': 'http://localhost:9200',
             'apiVersion': '1.7'
         });
 
