@@ -71,15 +71,7 @@ describe('AngularJS ElasticSearch Logger Module:', function() {
     var loggerSvc, $log, $httpBackend;
     var esConfig = {
       'host': 'http://192.168.1.41:9200',
-      'selector': 'random',
-      'connectionClass': 'angular',
-      'suggestCompression': false,
-      'minSockets': 10,
-      'maxSockets': 15,
-      'keepAlive': true,
-      'requestTimeout': 30000,
-      'maxRetries': 5,
-      'sniffOnStart': true
+      'apiVersion': '1.7'
     };
 
     var logConfig = {

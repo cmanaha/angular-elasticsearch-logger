@@ -88,6 +88,16 @@ angular.module('cmanaha.angular-elasticsearch-logger',['elasticsearch'])
             return [method, lineNum, charNum];
         };
 
+        self.getVariableWithDefault = function (variable, defaultValue){
+            var res = 'Unknown';
+            if (typeof variable === 'undefined'){
+                res = defaultValue;
+            } else {
+                res = variable;
+            }
+            return res;
+        };
+
         self.internalLog = function (logMsg, level, exception) {
 
             //Add operation to the backlog
@@ -104,16 +114,13 @@ angular.module('cmanaha.angular-elasticsearch-logger',['elasticsearch'])
                 message: logMsg,
                 level: level,
                 timestamp: new Date(Date.now()).toISOString(),
-                browserName: navigator.appName,
-                browserVersion: navigator.appVersion,
-                browserMinVersion: navigator.appMinorVersion,
-                browserProduct: navigator.product,
-                browserVendor: navigator.vendor,
-                browserUserAgent: navigator.userAgent,
-                browserUserLang: navigator.userLanguage,
-                browserConSpeed: navigator.connectionSpeed,
-                browserLang: navigator.browserLanguage,
-                browserGeolocation: navigator.geolocation,
+                browserCodeName: self.getVariableWithDefault(navigator.appCodeName,'Unknown'),
+                browserName: self.getVariableWithDefault(navigator.appName,'Unknown'),
+                browserVersion: self.getVariableWithDefault(navigator.appVersion,'Unknown'),
+                browserProduct: self.getVariableWithDefault(navigator.product,'Unknown'),
+                browserPlatform: self.getVariableWithDefault(navigator.platform,'Unknown'),
+                browserUserAgent: self.getVariableWithDefault(navigator.userAgent,'Unknown'),
+                browserGeolocation: self.getVariableWithDefault(navigator.geolocation,'Unknown')
             };
 
             //add additional application data context

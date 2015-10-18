@@ -16,10 +16,11 @@
     <form name="form" novalidate>
       <p>
         <label>Message to send:</label><br/>
-        <input ng-model="Ctrl.message" required/>
+        <textarea ng-model="Ctrl.message" required></textarea>
       </p>
 
       <button ng-click="Ctrl.logIt()" ng-disabled="form.$invalid">Log It!</button>
+      <button ng-click="Ctrl.logMultipleTimes()" ng-disabled="form.$invalid">Generate Multiple Logs</button>
     </form>
 
 	<script type="text/javascript" src="../bower_components/angular/angular.min.js"></script>
