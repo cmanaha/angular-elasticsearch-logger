@@ -14,7 +14,7 @@ module.exports = function(config){
       sourcePreprocessors = [];
     }
 
-    var configuration = {
+    config.set({
 
         basePath : '../',
 
@@ -80,11 +80,5 @@ module.exports = function(config){
               { type: 'text-summary', subdir: '.', file: 'text-summary.txt' },
             ]
         }
-    };
-
-    if (process.env.TRAVIS) {
-      configuration.browsers = ['Chrome_travis_ci'];
-    }
-
-    config.set(configuration);
+    });
 };
