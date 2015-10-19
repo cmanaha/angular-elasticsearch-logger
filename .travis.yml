@@ -11,6 +11,5 @@ before_script:
   - 'bower install' # install bower packages
 
 script:
-  - 'grunt test'
   - 'grunt'
 
