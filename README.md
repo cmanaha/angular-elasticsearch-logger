@@ -123,6 +123,7 @@ Kibana3
 ![alt tag](images/kibana3_demo1.png)
 ![alt tag](images/kibana3_demo2.png)
 ![alt tag](images/kibana3_demo3.png)
+![alt tag](images/kibana3_demo4.png)
 ![alt tag](images/kibana4_demo1.png)
 ![alt tag](images/kibana4_demo2.png)
 
