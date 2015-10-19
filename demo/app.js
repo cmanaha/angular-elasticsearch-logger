@@ -33,60 +33,48 @@ angular
     }]);
 
 
-//Using decorator to override the angular $log functionality
-angular.module('ElasticSearchLoggerDemoApp')
-	.config(['$provide',function($provide){
-	    $provide.decorator('$log',['$delegate','$injector',function($delegate, $injector){
-        
-        var eslogger = $injector.get('CMRESLogger');
-
-        var wrapMethod = function( originalMethod, esLoggerMethod ){
-            var retMethod = function(){
-                var args = [].slice.call(arguments);
-                originalMethod.apply(null,args);
-                esLoggerMethod(args);
-            };
-
-            return retMethod;
-        };
-
-
-        //wrap the existing API
-        $delegate.log =    wrapMethod($delegate.log, eslogger.info);
-        $delegate.debug =  wrapMethod($delegate.debug, eslogger.debug);
-        $delegate.info =   wrapMethod($delegate.info, eslogger.info);
-        $delegate.warn =   wrapMethod($delegate.warn, eslogger.warn);
-        $delegate.error =  wrapMethod($delegate.error, eslogger.error);
-
-        return $delegate;
-
-    }]);
-}]);
-
-//capture unhandled exceptions and log them to ElasticSearch
-angular.module('ElasticSearchLoggerDemoApp')
-  	.factory('$exceptionHandler', function() {
-  		return function(exception, cause) {
-    		exception.message += ' (caused by "' + cause + '")';
-    		console.error(exception.message);
-  		};
-	});
-
-
 angular
     .module('ElasticSearchLoggerDemoApp')
-    .controller( 'DemoCtrl', ['$log',function($log){
-    	var self = this;
+    .controller( 'DemoCtrl', ['$log','CMRESLogger',function($log, CMRESLogger){
+        var self = this;
         self.inputToken = null;
         self.message = '';
 
         self.TestException = function(message){
-        	this.message = message;
+            this.message = message;
         };
 
 
         self.logIt = function() {
             $log.info( self.message );
+            CMRESLogger.info( self.message );
+        };
+
+
+
+        self.logMultipleTimes = function(){
+            var numberOfLogs = Math.floor((Math.random() * 200) + 1);
+            
+            for (var i=0 ; i<numberOfLogs; i++){
+                var level = Math.floor((Math.random() * 5) + 1);
+                switch(level){
+                    case 1: 
+                        CMRESLogger.info( 'message ['+i+']: ' + self.message );
+                        break;
+                    case 2: 
+                        CMRESLogger.debug( 'message ['+i+']: ' + self.message );
+                        break;
+                    case 3: 
+                        CMRESLogger.warning( 'message ['+i+']: ' + self.message );
+                        break;
+                    case 4: 
+                        CMRESLogger.error( 'message ['+i+']: ' + self.message );
+                        break;
+                    case 5: 
+                        CMRESLogger.errorWithException( 'message ['+i+']: ' + self.message , new self.TestException('message'));
+                        break;
+                }
+            }
         };
 
     }]);
