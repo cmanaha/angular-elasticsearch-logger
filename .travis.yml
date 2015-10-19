@@ -1,6 +1,11 @@
 language: node_js
 node_js:
   - '0.10.33'
+
+deploy:
+  - provider: npm
+    email: c.manaha@gmail.com
+
 before_script:
   - 'export CHROME_BIN=chromium-browser'
   - 'export DISPLAY=:99.0'
@@ -9,5 +14,9 @@ before_script:
   - 'npm install' # install npm packages
   - 'bower install' # install bower packages
 
+script:
+  - 'grunt'
+
 after_script:
   - 'grunt test'
+
