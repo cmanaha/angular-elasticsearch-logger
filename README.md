@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/cmanaha/angular-elasticsearch-logger.svg)](https://travis-ci.org/cmanaha/angular-loggly-logger)
-
+[![Coverage Status](https://coveralls.io/repos/cmanaha/angular-elasticsearch-logger/badge.svg?branch=master&service=github)](https://coveralls.io/github/cmanaha/angular-elasticsearch-logger?branch=master)
 
 # AngularJS ElasticSearch Logger Service
 
