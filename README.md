@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/cmanaha/angular-elasticsearch-logger.svg)](https://travis-ci.org/cmanaha/angular-loggly-logger)
 [![Coverage Status](https://coveralls.io/repos/cmanaha/angular-elasticsearch-logger/badge.svg?branch=master&service=github)](https://coveralls.io/github/cmanaha/angular-elasticsearch-logger?branch=master)
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/cmanaha/angular-elasticsearch-logger?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 # AngularJS ElasticSearch Logger Service
 
