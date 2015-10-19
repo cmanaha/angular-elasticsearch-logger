@@ -1,6 +1,7 @@
-# AngularJS ElasticSearch Logger Service
+[![Build Status](https://travis-ci.org/cmanaha/angular-elasticsearch-logger.svg)](https://travis-ci.org/cmanaha/angular-loggly-logger)
 
-[TOC]
+
+# AngularJS ElasticSearch Logger Service
 
 This module provides an implementation of an AngularJS Service (actually a provider implementation) that allows user to log into [ElasticSearch](http://elastic.io)
 
@@ -121,9 +122,10 @@ The [DEMO](demo) folder shows a simple applicaiton configuration that can be use
 	1. elasticsearch.js
 	2. stacktrace.js
 
-## Known issues
+## Known issues / TODO
  - _stacktrace_ : Currently stacktrace is using an old version of the product. It really need to be revamped (and will be done in new versions)
- - _$log decoration_ : It is feasible to decorate AngularJS $log service with this elasticsearch service... still working on it and some issues with cyclical dependencies, given
+ - _$log decoration_ : It is feasible to decorate AngularJS $log service with this elasticsearch service... still working on it and some issues with cyclical dependencies; The development branch has currently an example of such implementation however there are still cyclic dependencies problems on it.
+ - _
 
 
 #License
