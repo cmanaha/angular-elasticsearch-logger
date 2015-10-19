@@ -5,14 +5,16 @@
 
 module.exports = function(config){
     var sourcePreprocessors = 'coverage';
+    
     function isDebug(argument) {
       return argument === '--debug';
     };
+    
     if (process.argv.some(isDebug)) {
       sourcePreprocessors = [];
     }
 
-    config.set({
+    var configuration = {
 
         basePath : '../',
 
@@ -25,6 +27,13 @@ module.exports = function(config){
             'angular-elasticsearch-logger.js',
             'test/unit/**/*.js'
         ],
+
+        customLaunchers: {
+          Chrome_travis_ci: {
+            base: 'Chrome',
+            flags: ['--no-sandbox']
+          }
+        },
 
         autoWatch : true,
 
@@ -71,5 +80,11 @@ module.exports = function(config){
               { type: 'text-summary', subdir: '.', file: 'text-summary.txt' },
             ]
         }
-    });
+    };
+
+    if (process.env.TRAVIS) {
+      configuration.browsers = ['Chrome_travis_ci'];
+    }
+
+    config.set(configuration);
 };
