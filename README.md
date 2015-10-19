@@ -9,7 +9,7 @@ This module provides an implementation of an AngularJS Service (actually a provi
 To install the module use:
 
 ```
-bower install https://cmanaha@bitbucket.org/cmanaha/angular-elasticsearch-logger.git --save
+bower install angular-elasticsearch-logger --save
 ```
 
 ### Getting started
