@@ -115,8 +115,16 @@ angular
 
 ### Demo
 
-The [DEMO](demo) folder shows a simple applicaiton configuration that can be used to test the system. Before executing the demo, make sure the [app.js](demo/app.js) points to your ElasticSearch configuration
+The [DEMO](demo) folder provides a simple applicaiton and configuration that can be used to test the library. For the demo to work, just point your browser to the index.html file and start elasticsearch in your development server
 
+*NOTE*: If your elasticsearch server runs in a remote server, before executing the demo,  amend the [app.js](demo/app.js) and point the host element to your ElasticSearch configuration
+
+Kibana3
+![alt tag](images/kibana3_demo1.png)
+![alt tag](images/kibana3_demo2.png)
+![alt tag](images/kibana3_demo3.png)
+![alt tag](images/kibana4_demo1.png)
+![alt tag](images/kibana4_demo2.png)
 
 ## Dependencies
  - required:
@@ -126,7 +134,6 @@ The [DEMO](demo) folder shows a simple applicaiton configuration that can be use
 ## Known issues / TODO
  - _stacktrace_ : Currently stacktrace is using an old version of the product. It really need to be revamped (and will be done in new versions)
  - _$log decoration_ : It is feasible to decorate AngularJS $log service with this elasticsearch service... still working on it and some issues with cyclical dependencies; The development branch has currently an example of such implementation however there are still cyclic dependencies problems on it.
- - _
 
 
 #License
