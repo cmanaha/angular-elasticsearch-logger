@@ -2,9 +2,9 @@
 [![Coverage Status](https://coveralls.io/repos/cmanaha/angular-elasticsearch-logger/badge.svg?branch=master&service=github)](https://coveralls.io/github/cmanaha/angular-elasticsearch-logger?branch=master)
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/cmanaha/angular-elasticsearch-logger?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-# AngularJS ElasticSearch Logger Service
+# AngularJS Elasticsearch Logger Service
 
-This module provides an implementation of an AngularJS Service (actually a provider implementation) that allows user to log into [ElasticSearch](http://elastic.io)
+This module provides an implementation of an AngularJS Service (actually a provider implementation) that allows user to log into [Elasticsearch](http://elastic.io)
 
 ### Installation
 
@@ -53,7 +53,7 @@ angular
 ```
 In this case the configuration points to a cluster at http://localhost:9200. the _esLoggingProvider.setElasticSearchConfig(config)_ takes a configuration object with any value defined accepted by [elasticsearch.js library](https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/configuration.html)
 
-_esLoggingProvider.setLogConfig(config)_ takes an object that can be used to set up the details of how the logger will connect and insert into ElasticSearch such as the name of the index where logs will be stored.
+_esLoggingProvider.setLogConfig(config)_ takes an object that can be used to set up the details of how the logger will connect and insert into Elasticsearch such as the name of the index where logs will be stored.
 
 The _esLoggingProvider.setApplicationLogContext(config)_ takes an object with any arbitrary keys and values, this gets appended to any new log line that gets inserted to elasticsearch as an extra field to the document; Applications may add extra parameters to identify and create categories in their application (for example to differenciate between environments).
 
@@ -85,8 +85,8 @@ The _CMRESLoggerProvider_ does also accept an extra configuration object that co
 The service internally buffers all the logs and sends the documents using the [bulk API](https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html#api-bulk) to ensure the scalability of log insertion.
 
  - _index_ : (string) Is the index that will be used (additionally the date will be post-fixed)
- - _type_ : (string) ElasticSearch documet type that should be used when inserting documents
- - _bufferSize_ : (integer) The number of log to buffer before submitting a bulk request to ElasticSearch. If that number if exceeded the logs are flushed
+ - _type_ : (string) Elasticsearch documet type that should be used when inserting documents
+ - _bufferSize_ : (integer) The number of log to buffer before submitting a bulk request to Elasticsearch. If that number if exceeded the logs are flushed
  - _flushIntervalInMS_ : (integer) number of milliseconds before inserting documents that might be pending from insertion in the buffer
 
 An example of such configuration is:
@@ -117,7 +117,7 @@ angular
 
 The [DEMO](demo) folder provides a simple applicaiton and configuration that can be used to test the library. For the demo to work, just point your browser to the index.html file and start elasticsearch in your development server
 
-*NOTE*: If your elasticsearch server runs in a remote server, before executing the demo,  amend the [app.js](demo/app.js) and point the host element to your ElasticSearch configuration
+*NOTE*: If your elasticsearch server runs in a remote server, before executing the demo,  amend the [app.js](demo/app.js) and point the host element to your Elasticsearch configuration
 
 Kibana3
 ![alt tag](images/kibana3_demo1.png)
