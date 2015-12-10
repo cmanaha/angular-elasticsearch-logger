@@ -89,5 +89,30 @@ angular
             $log.info( self.message );
         };
 
+        self.logMultipleTimes = function(){
+            var numberOfLogs = Math.floor((Math.random() * 200) + 1);
+            
+            for (var i=0 ; i<numberOfLogs; i++){
+                var level = Math.floor((Math.random() * 5) + 1);
+                switch(level){
+                    case 1: 
+                        CMRESLogger.info( 'message ['+i+']: ' + self.message );
+                        break;
+                    case 2: 
+                        CMRESLogger.debug( 'message ['+i+']: ' + self.message );
+                        break;
+                    case 3: 
+                        CMRESLogger.warning( 'message ['+i+']: ' + self.message );
+                        break;
+                    case 4: 
+                        CMRESLogger.error( 'message ['+i+']: ' + self.message );
+                        break;
+                    case 5: 
+                        CMRESLogger.errorWithException( 'message ['+i+']: ' + self.message , new self.TestException('message'));
+                }
+            }
+        };
+
+
     }]);
 

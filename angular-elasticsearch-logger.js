@@ -98,7 +98,7 @@ angular.module('cmanaha.angular-elasticsearch-logger',['elasticsearch'])
             return res;
         };
 
-        self.internalLog = function (logMsg, level, exception) {
+        self.internalLog = function (logMsg, level, exception, properties) {
 
             //Add operation to the backlog
             self.logBuffer.push(
@@ -127,6 +127,13 @@ angular.module('cmanaha.angular-elasticsearch-logger',['elasticsearch'])
             angular.forEach(self.appDetails, function (value, key) {
                 data[key] = value;
             }); 
+
+            //add additional logging properties context
+            if (typeof (properties) !== 'undefined') {
+                angular.forEach( properties, function (value, key) {
+                    data[key] = value;
+                });
+            } 
 
             //add details about the method, line number, etc.
             //if the log was thrown from an exception, log the exception details and
@@ -178,12 +185,12 @@ angular.module('cmanaha.angular-elasticsearch-logger',['elasticsearch'])
 
 
         return {
-            info: function (message) { self.internalLog(message, self.level.INFO, undefined); },
-            warning: function (message) { self.internalLog(message, self.level.WARN, undefined); },
-            error: function (message) { self.internalLog(message, self.level.ERROR, undefined); },
-            debug: function (message) { self.internalLog(message, self.level.DEBUG, undefined); },
-            warningWithException: function (message, exception) { self.internalLog(message, self.level.WARN, exception); },
-            errorWithException: function (message, exception) { self.internalLog(message, self.level.ERROR, exception); },
+            info: function (message, properties) { self.internalLog(message, self.level.INFO, undefined, properties); },
+            warning: function (message, properties) { self.internalLog(message, self.level.WARN, undefined, properties); },
+            error: function (message, properties) { self.internalLog(message, self.level.ERROR, undefined, properties); },
+            debug: function (message, properties) { self.internalLog(message, self.level.DEBUG, undefined, properties); },
+            warningWithException: function (message, exception, properties) { self.internalLog(message, self.level.WARN, exception, undefined); },
+            errorWithException: function (message, exception, properties) { self.internalLog(message, self.level.ERROR, exception, undefined); },
             flush: function(){self.internalFlush();},
         };
     }];
