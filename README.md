@@ -78,6 +78,34 @@ angular
     }]);
 ```
 
+The logger provide some functionality similar to log4net and log4j where aside from passing the log message the user can pass a thread context map; This can be used to 
+as instrumentation and can be quite useful to log additional information that can be 
+charted with Kibana. 
+
+The following example shows an operation where aside from the log, the duration of an
+operation is stored into elasticsearch as additional contextual parameter so it can
+be graphed and instrumented not only just as a log message.
+
+```javascript
+angular
+    .module('yourAngularApp')
+    .controller( 'MyCtrl', ['CMRESLogger',function(CMRESLogger){
+        ...
+        //perform operation and get instrumentation timings
+
+        var timeInMS = 440;
+
+        var instrumentationContext = {};
+        extraInstrumentationCtx['totalTimeInMS'] =  timeInMS;
+        extraInstrumentationCtx['operationType'] = 'http_op';
+
+        CMRESLogger.info( 'Completed operation in  '+timeInMS+', extraInstrumentationCtx);
+
+    }]);
+```
+
+
+
 ### Configuration
 
 The _CMRESLoggerProvider_ does also accept an extra configuration object that configures the internal behaviour of the logger on things such as how to buffer and submit to elasticsearch.

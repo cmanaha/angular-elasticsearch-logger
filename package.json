@@ -1,6 +1,6 @@
 {
   "name": "angular-elasticsearch-logger",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "./angular-elasticsearch-logger.js",
   "description": "AngularJs elasticserach logger provider",
   "repository": {

@@ -1,8 +1,9 @@
 Version numbers correspond to `bower.json` version
 
-# 1.0.0
+# 0.0.2
 
 ## Features
+Added support for context in implementation
 
 ## Bug Fixes
 
