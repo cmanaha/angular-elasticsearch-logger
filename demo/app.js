@@ -50,13 +50,19 @@ angular
             CMRESLogger.info( self.message );
         };
 
+        self.logItWithProperties = function(message,number) {
+            var properties = {};
+            properties['test1'] = 'property';
+            properties['number'] = number;
+            CMRESLogger.info(message,properties);
+        };
 
 
         self.logMultipleTimes = function(){
             var numberOfLogs = Math.floor((Math.random() * 200) + 1);
             
             for (var i=0 ; i<numberOfLogs; i++){
-                var level = Math.floor((Math.random() * 5) + 1);
+                var level = Math.floor((Math.random() * 6) + 1);
                 switch(level){
                     case 1: 
                         CMRESLogger.info( 'message ['+i+']: ' + self.message );
@@ -73,9 +79,13 @@ angular
                     case 5: 
                         CMRESLogger.errorWithException( 'message ['+i+']: ' + self.message , new self.TestException('message'));
                         break;
+                    case 6:
+                        self.logItWithProperties('message ['+i+']: ' + self.message,i);
+                        break;
                 }
             }
         };
+
 
     }]);
 

@@ -111,7 +111,7 @@ describe('AngularJS ElasticSearch Logger Module:', function() {
       expect(loggerSvc).not.toBe(null);
     });
 
-    it('will send a message to elasticsearch at all levels when properly configured', function () {
+    it('will send a simple message to elasticsearch at all levels when properly configured', function () {
       logProvider.setElasticSearchConfig(esConfig);
       logProvider.setLogConfig(logConfig);
       logProvider.setApplicationLogContext(appLogContextConfig);
@@ -120,6 +120,26 @@ describe('AngularJS ElasticSearch Logger Module:', function() {
       loggerSvc.debug("Test message, at DEBUG");
       loggerSvc.warning("Test message, at WARNING");
       loggerSvc.error("Test message, at ERROR");
+    });
+
+
+    it('will send a message with extended properties to elasticsearch at all levels when properly configured', function () {
+      logProvider.setElasticSearchConfig(esConfig);
+      logProvider.setLogConfig(logConfig);
+      logProvider.setApplicationLogContext(appLogContextConfig);
+      
+      var properties = {};
+      properties['string_id'] = 'StringIDValue';
+      properties['metric_int'] = 4;
+      properties['metric_float'] = 4.4;
+      properties['nested_object'] = {};
+      properties['nested_object']['name'] =  'name_example';
+
+
+      loggerSvc.info("Test message , at INFO", properties);
+      loggerSvc.debug("Test message, at DEBUG", properties);
+      loggerSvc.warning("Test message, at WARNING", properties);
+      loggerSvc.error("Test message, at ERROR", properties);
     });
 
     it('will send a errorWithException to elasticsearch when properly configured', function () {
