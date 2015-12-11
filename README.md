@@ -99,7 +99,7 @@ angular
         extraInstrumentationCtx['totalTimeInMS'] =  timeInMS;
         extraInstrumentationCtx['operationType'] = 'http_op';
 
-        CMRESLogger.info( 'Completed operation in  '+timeInMS+', extraInstrumentationCtx);
+        CMRESLogger.info( 'Completed operation in '+timeInMS, extraInstrumentationCtx);
 
     }]);
 ```
